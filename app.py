@@ -12,4 +12,4 @@ def greetings():
 
 app.run(host="0.0.0.0")
 
-#docker run -p 5000:5000 babble
+#docker run -p 5000:5000 neberizer/babble

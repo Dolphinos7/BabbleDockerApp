@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import greetings
 app = Flask(__name__)
 
 @app.route('/')
@@ -7,7 +8,7 @@ def hello_world():
 
 @app.route('/greetings')
 def greetings():
-        to_return = [1, 2, 3]
+        to_return = ["Hello there", "Welcome"]
         return jsonify(greetings=to_return)
 
 app.run(host="0.0.0.0")

@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+    app:
+        build: ./
+        image: neberizer/babble #image to import
+        working_dir: /app #sets working directory
+        volumes:
+            - ./:/app
+        ports:
+            - 5000:5000
+        environment:
+            FLASK_ENV: development
+            FLASK_APP: /app/app.py
+        labels:
+            traefik.http.routers.flask.rule: Path(`/`) #.flask can be anything
+
+    proxy:
+        image: traefik:v2.1
+        command: --api.insecure=true --providers.docker
+        ports:
+        - 80:80
+        - 8080:8080
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+                
+
+# you could totally hack somebody with this
+# that is why terminal is read only by deafualt 
+#we are def using this at bitcamp
+# yes
+# it doesn't replace git, but it enchances experience
+# but for pair coding its dank
+# I agree
+# if we need to pair code we can fire this up and be good to go
+# im leaving this comment chain when we submit
+
+#Equivalent to below:
+# docker container run \
+# -p 5000:5000 \
+# -v $(pwd):/app \
+# -w /app \
+# -e FLASK_ENV=development \
+# python-app
+
+
+#docker-compose commands
+#up - start stuff
+#down - stop stuff
+#logs - view logs

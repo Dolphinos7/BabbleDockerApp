@@ -7,7 +7,7 @@ responses = []
 @app.route('/blabs')
 def get_blabs():
         created_since = request.query_string
-
+        #This was just for testing queries, not at all what spec requires us to do
         
         return created_since
 

@@ -1,14 +1,18 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-        return "hello world"
+greetings = ["hello", "hey"]
 
-@app.route('/greetings')
-def greetings():
-        to_return = ["Hello there", "Welcome"]
-        return jsonify(greetings=to_return)
+@app.route('/')
+def get_all_greetings():
+        return jsonify(greetings)
+
+@app.route( '/greetings' , methods = [ 'POST'])
+def add_greeting():
+        content = request.json
+        newGreeting = "Hello %s" % content[ 'name']
+        greetings.append(newGreeting)
+        return jsonify({ "greeting" : newGreeting })
 
 app.run(host="0.0.0.0")
 

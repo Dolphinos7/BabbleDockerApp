@@ -13,7 +13,7 @@ services:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
         labels:
-            traefik.http.routers.flask.rule: Path(`/`) #.flask can be anything
+            traefik.http.routers.flask.rule: PathPrefix(`/`) #.flask can be anything
 
     proxy:
         image: traefik:v2.1
@@ -23,17 +23,7 @@ services:
         - 8080:8080
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
-                
-
-# you could totally hack somebody with this
-# that is why terminal is read only by deafualt 
-#we are def using this at bitcamp
-# yes
-# it doesn't replace git, but it enchances experience
-# but for pair coding its dank
-# I agree
-# if we need to pair code we can fire this up and be good to go
-# im leaving this comment chain when we submit
+            
 
 #Equivalent to below:
 # docker container run \

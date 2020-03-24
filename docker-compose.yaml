@@ -7,13 +7,11 @@ services:
         working_dir: /app #sets working directory
         volumes:
             - ./:/app
-        ports:
-            - 5000:5000
         environment:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
         labels:
-            traefik.http.routers.flask.rule: PathPrefix(`/`) #.flask can be anything
+            traefik.http.routers.babble.rule: PathPrefix(`/api`) #.flask can be anything
 
     proxy:
         image: traefik:v2.1

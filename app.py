@@ -3,6 +3,7 @@ import time
 app = Flask(__name__)
 
 responses = []
+next_id = 1
 
 
 @app.route('/blabs/<id>', methods=['DELETE'])
@@ -16,25 +17,27 @@ def remove_blab(id):
 
 @app.route('/blabs', methods=['GET'])
 def get_blabs():
-    created_since = request.args
-    return jsonify(responses)
+        args = request.args
+        created_since = args.get("createdSince")
+        toReturn = []
+        for response in responses:
+                if response.get("postTime")>=int(created_since):
+                        toReturn.append(response)
+        return jsonify(toReturn)
 
-    #created_since = request.curl -X POST -d '{ "author": { "email": "user@example.com", "name": "string"}, "message": "Hello there"}' localhost/blabs --header "Content-Type:application/json"
-    #This was just for testing queries, not at all what spec requires us to do
-
-    #return created_since
 
 
 @app.route('/blabs', methods=['POST'])
 def add_blab():
-    author = request.get_json().get('author')
-    message = request.get_json().get('message')
-
-    #need to not hardcode in the post id
-    response = {
-        'id': str(1),
-        'postTime': int(time.time()),
-        'author': author,
-        'message': message}
-    responses.append(response)
-    return jsonify(response)
+        global next_id
+        author = request.get_json().get('author')
+        message = request.get_json().get('message')
+        
+        response = {
+                'id': str(next_id), 
+                'postTime':int(time.time()),
+                'author': author,
+                'message': message }
+        responses.append(response)
+        next_id+=1
+        return jsonify(response)

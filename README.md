@@ -4,7 +4,7 @@ Babble is going to be a multi-container application. It is being implemented by 
 
 
 Sample POST request via CURL 
-curl -X POST -d '{ "author": { "email": "user@example.com", "name": "string"}, "message": "Hello there"}' localhost/blabs --header "Content-Type:application/json"
+`curl -X POST -d '{ "author": { "email": "user@example.com", "name": "string"}, "message": "Hello there"}' localhost/blabs --header "Content-Type:application/json"`
 
-Sample delete command via CURL
-curl -X DELETE localhost/blabs/1
+Sample DELETE command via CURL
+`curl -X DELETE localhost/blabs/1`

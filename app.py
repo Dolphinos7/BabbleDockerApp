@@ -6,16 +6,16 @@ responses = []
 next_id = 1
 
 
-@app.route('/blabs/<id>', methods=['DELETE'])
+@app.route('/api/blabs/<id>', methods=['DELETE'])
 def remove_blab(id):
     for response in responses:
         if (response["id"] == id):
             responses.remove(response)
-            return Response(response , status=200, mimetype='application/json')
+            return Response(response, status=200, mimetype='application/json')
     return abort(404)
 
 
-@app.route('/blabs', methods=['GET'])
+@app.route('/api/blabs', methods=['GET'])
 def get_blabs():
         args = request.args
         created_since = args.get("createdSince")
@@ -27,7 +27,7 @@ def get_blabs():
 
 
 
-@app.route('/blabs', methods=['POST'])
+@app.route('/api/blabs', methods=['POST'])
 def add_blab():
         global next_id
         author = request.get_json().get('author')
@@ -40,4 +40,5 @@ def add_blab():
                 'message': message }
         responses.append(response)
         next_id+=1
-        return jsonify(response)
+        # return jsonify(response)
+        return Response(response, status=201, mimetype='application/json')

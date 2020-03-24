@@ -4,12 +4,16 @@ app = Flask(__name__)
 
 responses = []
 
-@app.route('/blabs')
+@app.route('/blabs', methods = ['GET'])
 def get_blabs():
-        created_since = request.query_string
+        created_since = request.args
+        return jsonify(responses)
+
+
+        #created_since = request.query_string
         #This was just for testing queries, not at all what spec requires us to do
         
-        return created_since
+        #return created_since
 
 @app.route('/blabs', methods = ['POST'])
 def add_blab():

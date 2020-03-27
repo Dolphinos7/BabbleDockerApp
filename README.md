@@ -8,3 +8,6 @@ Sample POST request via CURL
 
 Sample DELETE command via CURL
 `curl -X DELETE localhost/api/blabs/1`
+
+Sample GET command via CURL
+`http://localhost/api/blabs?createdSince=0`

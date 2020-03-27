@@ -6,7 +6,7 @@ responses = []
 next_id = 1
 
 
-@app.route('/api/blabs/<id>', methods=['DELETE'])
+@app.route('/blabs/<id>', methods=['DELETE'])
 def remove_blab(id):
     for response in responses:
         if (response["id"] == id):

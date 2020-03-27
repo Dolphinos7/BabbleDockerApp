@@ -22,11 +22,11 @@ services:
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
 
-    # tests:
-    #     image: vtcs2304s19/blabber-api-tests
-    #     environment:
-    #         SERVICE_NAME: api
-    #         API_PORT: "80"         
+    tests:
+        image: vtcs2304s19/blabber-api-tests
+        environment:
+            SERVICE_NAME: api
+            API_PORT: "80"         
 
 #Equivalent to below:
 # docker container run \

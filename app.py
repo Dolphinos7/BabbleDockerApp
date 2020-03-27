@@ -11,7 +11,7 @@ def remove_blab(id):
     for response in responses:
         if (response["id"] == id):
             responses.remove(response)
-            return Response(response, status=200, mimetype='application/json')
+            return Response(jsonify(response), status=200, mimetype='application/json')
     return abort(404)
 
 
@@ -23,8 +23,7 @@ def get_blabs():
         for response in responses:
                 if response.get("postTime")>=int(created_since):
                         toReturn.append(response)
-        # return jsonify(toReturn)
-        return Response(toReturn, status=200, mimetype='application/json')
+        return Response(jsonify(toReturn), status=200, mimetype='application/json')
 
 
 
@@ -41,5 +40,4 @@ def add_blab():
                 'message': message }
         responses.append(response)
         next_id+=1
-        # return jsonify(response)
-        return Response(response, status=201, mimetype='application/json')
+        return Response(jsonify(response), status=201, mimetype='application/json')

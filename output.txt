@@ -1,0 +1,69 @@
+[512 rgniadek@rgniadek-XPS-15 ~/Documents/Repos/BabbleDockerApp] $ docker-compose up
+Creating network "babbledockerapp_default" with the default driver
+Creating babbledockerapp_proxy_1 ... done
+Creating babbledockerapp_api_1   ... done
+Creating babbledockerapp_tests_1 ... done
+Attaching to babbledockerapp_tests_1, babbledockerapp_api_1, babbledockerapp_proxy_1
+api_1    |  * Serving Flask app "/app/app.py" (lazy loading)
+api_1    |  * Environment: development
+api_1    |  * Debug mode: on
+api_1    |  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+api_1    |  * Restarting with stat
+api_1    |  * Debugger is active!
+api_1    |  * Debugger PIN: 269-017-065
+proxy_1  | time="2020-03-27T21:23:18Z" level=info msg="Configuration loaded from flags."
+proxy_1  | time="2020-03-27T21:23:18Z" level=error msg="service \"tests-babbledockerapp\" error: port is missing" providerName=docker container=tests-babbledockerapp-c66032e0f05b10afa7300dd38f8197716620d91039df4c69b6de2445bd681db3
+tests_1  | yarn run v1.15.2
+tests_1  | $ mocha --timeout 3000
+tests_1  | Using API_BASE: http://api:80
+tests_1  | 
+tests_1  | 
+tests_1  |   /blabs
+tests_1  |     GET /blabs
+tests_1  |       1) should get empty array when nothing exists
+tests_1  |       2) should honor createdSince parameter
+tests_1  |     POST /blabs
+tests_1  |       3) creates a blab successfully
+tests_1  |       4) displays blab after creation
+tests_1  |     DELETE /blabs/:id
+tests_1  |       5) deletes a blab correctly
+tests_1  | 
+tests_1  | 
+tests_1  |   0 passing (33ms)
+tests_1  |   5 failing
+tests_1  | 
+tests_1  |   1) /blabs
+tests_1  |        GET /blabs
+tests_1  |          should get empty array when nothing exists:
+tests_1  |      Error: connect ECONNREFUSED 172.25.0.3:80
+tests_1  |       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1083:14)
+tests_1  | 
+tests_1  |   2) /blabs
+tests_1  |        GET /blabs
+tests_1  |          should honor createdSince parameter:
+tests_1  |      Error: connect ECONNREFUSED 172.25.0.3:80
+tests_1  |       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1083:14)
+tests_1  | 
+tests_1  |   3) /blabs
+tests_1  |        POST /blabs
+tests_1  |          creates a blab successfully:
+tests_1  |      Error: connect ECONNREFUSED 172.25.0.3:80
+tests_1  |       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1083:14)
+tests_1  | 
+tests_1  |   4) /blabs
+tests_1  |        POST /blabs
+tests_1  |          displays blab after creation:
+tests_1  |      Error: connect ECONNREFUSED 172.25.0.3:80
+tests_1  |       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1083:14)
+tests_1  | 
+tests_1  |   5) /blabs
+tests_1  |        DELETE /blabs/:id
+tests_1  |          deletes a blab correctly:
+tests_1  |      Error: connect ECONNREFUSED 172.25.0.3:80
+tests_1  |       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1083:14)
+tests_1  | 
+tests_1  | 
+tests_1  | 
+tests_1  | error Command failed with exit code 5.
+tests_1  | info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+babbledockerapp_tests_1 exited with code 5

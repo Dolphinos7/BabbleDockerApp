@@ -11,7 +11,7 @@ services:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
         labels:
-            traefik.http.routers.babble.rule: PathPrefix(`/api`) #.flask can be anything
+            traefik.http.routers.babble.rule: PathPrefix(`/`)
 
     proxy:
         image: traefik:v2.1
@@ -28,13 +28,6 @@ services:
             SERVICE_NAME: api
             API_PORT: "5000"         
 
-#Equivalent to below:
-# docker container run \
-# -p 5000:5000 \
-# -v $(pwd):/app \
-# -w /app \
-# -e FLASK_ENV=development \
-# python-app
 
 
 #docker-compose commands

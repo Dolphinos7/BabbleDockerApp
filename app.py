@@ -23,7 +23,8 @@ def get_blabs():
         for response in responses:
                 if response.get("postTime")>=int(created_since):
                         toReturn.append(response)
-        return jsonify(toReturn)
+        # return jsonify(toReturn)
+        return Response(toReturn, status=200, mimetype='application/json')
 
 
 

@@ -19,6 +19,8 @@ def remove_blab(id):
 def get_blabs():
         args = request.args
         created_since = args.get("createdSince")
+        if created_since is None:
+                created_since = 0
         toReturn = []
         for response in responses:
                 if response.get("postTime")>=int(created_since):

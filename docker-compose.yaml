@@ -22,14 +22,14 @@ services:
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
 
-    database:
+    mongo:
         image: mongo
 
-    tests:
-        image: vtcs2304s19/blabber-api-tests
-        environment:
-            SERVICE_NAME: api
-            API_PORT: "5000"         
+    # tests:
+    #     image: vtcs2304s19/blabber-api-tests
+    #     environment:
+    #         SERVICE_NAME: api
+    #         API_PORT: "5000"         
 
 
 

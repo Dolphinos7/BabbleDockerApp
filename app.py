@@ -19,14 +19,14 @@ def remove_blab(id: int):
 #             del i['_id']
 #             mongoCollection.delete_one(response)
 #             return make_response(jsonify(i), 200)
-    query = {'_id': id}
+    query = {'_id': int(id)}
     to_delete = mongoCollection.find_one(query)
-    print(to_delete)
     if to_delete:
-        result = to_delete.copy()
-        result['id'] = str(to_delete['_id'])
-        del result['_id']
-        return make_response(jsonify(result), 200)
+        to_return = to_delete.copy()
+        to_return['id'] = str(to_delete['_id'])
+        del to_return['_id']
+        mongoCollection.delete_one(query)
+        return make_response(jsonify(to_return), 200)
     return abort(404)
 
 

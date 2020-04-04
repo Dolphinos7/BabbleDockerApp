@@ -12,13 +12,6 @@ next_id = 1
 
 @app.route('/blabs/<id>', methods=['DELETE'])
 def remove_blab(id: int):
-#     for response in mongoCollection.find():
-#         if (response["_id"] == id):
-#             i = response.copy()
-#             i['id'] = str(response['_id'])
-#             del i['_id']
-#             mongoCollection.delete_one(response)
-#             return make_response(jsonify(i), 200)
     query = {'_id': int(id)}
     to_delete = mongoCollection.find_one(query)
     if to_delete:

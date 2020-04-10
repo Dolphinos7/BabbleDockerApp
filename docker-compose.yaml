@@ -20,8 +20,6 @@ services:
             - 9090:9090
         volumes:
             - ./prometheus.yml:/etc/prometheus/prometheus.yml
-        labels:
-            traefik.http.routers.metrics.rule: PathPrefix(`/metrics`) 
             
     proxy:
         image: traefik:v2.1

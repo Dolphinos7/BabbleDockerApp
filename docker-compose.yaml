@@ -10,9 +10,19 @@ services:
         environment:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
+            DEBUG_METRICS: "some_value"
         labels:
             traefik.http.routers.babble.rule: PathPrefix(`/api`)
 
+    prometheus:
+        image: prom/prometheus
+        ports:
+            - 9090:9090
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml
+        labels:
+            traefik.http.routers.metrics.rule: PathPrefix(`/metrics`) 
+            
     proxy:
         image: traefik:v2.1
         command: --api.insecure=true --providers.docker
@@ -23,7 +33,7 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock
 
     mongo:
-        image: mongo
+        image: mongo   
 
     # tests:
     #     image: vtcs2304s19/blabber-api-tests

@@ -1,7 +1,11 @@
 from flask import Flask, jsonify, request, make_response, abort
 import time
 import pymongo as db
+from prometheus_flask_exporter import PrometheusMetrics
+
 app = Flask(__name__)
+
+metrics = PrometheusMetrics(app=app)
 
 mongoClient = db.MongoClient("mongodb://mongo:27017")
 mongoCollection = mongoClient["babble"]["blabs"]

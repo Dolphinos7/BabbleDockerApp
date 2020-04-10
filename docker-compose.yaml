@@ -15,11 +15,13 @@ services:
             traefik.http.routers.babble.rule: PathPrefix(`/api`)
 
     prometheus:
+        user: root
         image: prom/prometheus
         ports:
             - 9090:9090
         volumes:
             - ./prometheus.yml:/etc/prometheus/prometheus.yml
+            
             
     proxy:
         image: traefik:v2.1

@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, make_response, abort
 import time
 import pymongo as db
 from prometheus_flask_exporter import PrometheusMetrics
+from prometheus_client import Counter
 
 app = Flask(__name__)
 
@@ -13,6 +14,8 @@ mongoCollection = mongoClient["babble"]["blabs"]
 
 responses = []
 next_id = 1
+blabCounter = Counter('TotalBlabs', 'The total amount of blabs that have been added')
+
 
 
 @app.route('/api/blabs/<id>', methods=['DELETE'])
@@ -46,6 +49,7 @@ def get_blabs():
 
 @app.route('/api/blabs', methods=['POST'])
 def add_blab():
+    blabCounter.inc()
     global next_id
     author = request.get_json().get('author')
     message = request.get_json().get('message')

@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 metrics = PrometheusMetrics(app=app)
 
+
 mongoClient = db.MongoClient("mongodb://mongo:27017")
 mongoCollection = mongoClient["babble"]["blabs"]
 

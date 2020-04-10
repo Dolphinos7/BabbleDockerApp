@@ -11,7 +11,7 @@ services:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
         labels:
-            traefik.http.routers.babble.rule: PathPrefix(`/`)
+            traefik.http.routers.babble.rule: PathPrefix(`/api`)
 
     proxy:
         image: traefik:v2.1

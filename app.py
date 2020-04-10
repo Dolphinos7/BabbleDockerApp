@@ -10,7 +10,7 @@ responses = []
 next_id = 1
 
 
-@app.route('/blabs/<id>', methods=['DELETE'])
+@app.route('/api/blabs/<id>', methods=['DELETE'])
 def remove_blab(id: int):
     query = {'_id': int(id)}
     to_delete = mongoCollection.find_one(query)
@@ -23,7 +23,7 @@ def remove_blab(id: int):
     return abort(404)
 
 
-@app.route('/blabs', methods=['GET'])
+@app.route('/api/blabs', methods=['GET'])
 def get_blabs():
     args = request.args
     created_since = args.get("createdSince")
@@ -39,7 +39,7 @@ def get_blabs():
     return make_response(jsonify(toReturn), 200)
 
 
-@app.route('/blabs', methods=['POST'])
+@app.route('/api/blabs', methods=['POST'])
 def add_blab():
     global next_id
     author = request.get_json().get('author')

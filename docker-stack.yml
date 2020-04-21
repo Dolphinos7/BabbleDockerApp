@@ -2,7 +2,6 @@ version: "3.7"
 
 services:
     api:
-        build: ./
         image: neberizer/babble #image to import
         working_dir: /app #sets working directory
         volumes:

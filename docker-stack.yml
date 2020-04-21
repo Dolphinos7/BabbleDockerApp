@@ -17,28 +17,28 @@ services:
                 constraints:
                     - "node.role==worker"
 
-    prometheus:
-        user: root
-        image: prom/prometheus
-        ports:
-            - 9090:9090
-        volumes:
-            - ./prometheus.yml:/etc/prometheus/prometheus.yml
-        deploy:
-            placement:
-                constraints:
-                    - "node.role==worker"
+    # prometheus:
+    #     user: root
+    #     image: prom/prometheus
+    #     ports:
+    #         - 9090:9090
+    #     volumes:
+    #         - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    #     deploy:
+    #         placement:
+    #             constraints:
+    #                 - "node.role==worker"
 
-    grafana:
-        image: grafana/grafana
-        volumes:
-            - grafana-storage:/var/lib/grafana
-        ports:
-            - 2999:2999
-        deploy:
-            placement:
-                constraints:
-                    - "node.role==worker"
+    # grafana:
+    #     image: grafana/grafana
+    #     volumes:
+    #         - grafana-storage:/var/lib/grafana
+    #     ports:
+    #         - 2999:2999
+    #     deploy:
+    #         placement:
+    #             constraints:
+    #                 - "node.role==worker"
             
             
     proxy:

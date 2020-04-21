@@ -44,6 +44,8 @@ services:
 
     client:
         image: vtcs2304s19/blabber-client
+        labels:
+            traefik.http.routers.client.rule: PathPrefix(`/`)
 
     # tests:
     #     image: vtcs2304s19/blabber-api-tests

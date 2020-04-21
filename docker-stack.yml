@@ -16,7 +16,7 @@ services:
         deploy:
             placement:
                 constraints:
-                    -  "node.role==worker"
+                    - "node.role==worker"
 
     prometheus:
         user: root
@@ -28,7 +28,7 @@ services:
         deploy:
             placement:
                 constraints:
-                    -  "node.role==worker"
+                    - "node.role==worker"
 
     grafana:
         image: grafana/grafana
@@ -39,7 +39,7 @@ services:
         deploy:
             placement:
                 constraints:
-                    -  "node.role==worker"
+                    - "node.role==worker"
             
             
     proxy:
@@ -53,14 +53,14 @@ services:
         deploy:
             placement:
                 constraints:
-                    -  "node.role==manager"
+                    - "node.role==manager"
 
     mongo:
         image: mongo   
         deploy:
             placement:
                 constraints:
-                    -  "node.role==worker"
+                    - "node.role==worker"
 
     # tests:
     #     image: vtcs2304s19/blabber-api-tests

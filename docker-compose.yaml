@@ -42,6 +42,9 @@ services:
     mongo:
         image: mongo   
 
+    client:
+        image: vtcs2304s19/blabber-client
+
     # tests:
     #     image: vtcs2304s19/blabber-api-tests
     #     environment:

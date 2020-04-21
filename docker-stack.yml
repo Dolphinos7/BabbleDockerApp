@@ -61,6 +61,15 @@ services:
                 constraints:
                     - "node.role==worker"
 
+    client:
+        image: vtcs2304s19/blabber-client
+        labels:
+            traefik.http.routers.client.rule: PathPrefix(`/`)
+        deploy:
+            placement:
+                constraints:
+                    - "node.role==worker"
+
     # tests:
     #     image: vtcs2304s19/blabber-api-tests
     #     environment:

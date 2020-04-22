@@ -72,6 +72,17 @@ services:
                 constraints:
                     - "node.role==worker"
 
+    registry:
+        image: registry
+        ports:
+            5000:5000
+        command:
+            docker push localhost:5000/neberizer/babble
+        deploy:
+            placement:
+                constraints:
+                    - "node.role==worker"
+
     # tests:
     #     image: vtcs2304s19/blabber-api-tests
     #     environment:

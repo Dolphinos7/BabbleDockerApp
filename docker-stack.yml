@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
     api:
-        command: bash -c "git clone git@github.com:Dolphinos7/BabbleDockerApp.git"
+        command: bash -c "https://github.com/Dolphinos7/BabbleDockerApp.git"
 
         image: neberizer/babble #image to import
         working_dir: /app #sets working directory

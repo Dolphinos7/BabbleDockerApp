@@ -2,8 +2,6 @@ version: "3.7"
 
 services:
     api:
-        command: bash -c "https://github.com/Dolphinos7/BabbleDockerApp.git"
-
         image: neberizer/babble #image to import
         working_dir: /app #sets working directory
         volumes:
@@ -16,9 +14,6 @@ services:
             traefik.http.routers.babble.rule: PathPrefix(`/api`)
         deploy:
             replicas: 2
-            placement:
-                constraints:
-                    - "node.role==worker"
 
     # prometheus:
     #     user: root

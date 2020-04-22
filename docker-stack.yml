@@ -14,6 +14,9 @@ services:
             traefik.http.routers.babble.rule: PathPrefix(`/api`)
         deploy:
             replicas: 2
+            placement:
+                constraints:
+                    - "node.role==manager"
 
     # prometheus:
     #     user: root

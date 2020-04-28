@@ -2,4 +2,4 @@ flask
 pymongo
 prometheus_flask_exporter
 prometheus_client
-envyaml
+python-dotenv

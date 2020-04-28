@@ -1,13 +1,14 @@
 from flask import Flask, jsonify, request, make_response, abort
-from envyaml import EnvYAML
+from dotenv import load_dotenv
+import os
 import time
 import pymongo as db
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Counter
 
-env = EnvYAML('env.yaml')
-db_host = env.get('database.host', 'mongo')
-db_port = env.get('database.port', '27017')
+load_dotenv()
+db_host = os.getenv("DATABASE_HOST")
+db_port = os.getenv("DATABASE_PORT")
 
 app = Flask(__name__)
 

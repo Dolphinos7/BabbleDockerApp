@@ -9,8 +9,8 @@ from prometheus_client import Counter
 path = os.getenv('ENV_FILE_PATH')
 
 load_dotenv(dotenv_path=path)
-db_host = os.getenv("DATABASE_HOST")
-db_port = os.getenv("DATABASE_PORT")
+db_host = os.getenv('DATABASE_HOST', 'mongo')
+db_port = os.getenv('DATABASE_PORT', '27017')
 
 app = Flask(__name__)
 
@@ -63,7 +63,6 @@ def add_blab():
     message = request.get_json().get('message')
 
     response = {
-        '_id': next_id,
         'postTime': int(time.time()),
         'author': author,
         'message': message}

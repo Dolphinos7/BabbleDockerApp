@@ -2,7 +2,6 @@ version: "3.7"
 
 services:
     api:
-        #env_file: ./.env
         build: ./
         image: neberizer/babble #image to import
         working_dir: /app #sets working directory
@@ -12,6 +11,7 @@ services:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
             DEBUG_METRICS: "some_value"
+            ENV_FILE_PATH: "./.env"
         labels:
             traefik.http.routers.babble.rule: PathPrefix(`/api`)
 

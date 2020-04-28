@@ -6,7 +6,9 @@ import pymongo as db
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Counter
 
-load_dotenv()
+path = os.getenv('ENV_FILE_PATH')
+
+load_dotenv(dotenv_path=path)
 db_host = os.getenv("DATABASE_HOST")
 db_port = os.getenv("DATABASE_PORT")
 

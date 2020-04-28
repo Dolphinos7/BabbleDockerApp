@@ -12,10 +12,10 @@ db_port = os.getenv("DATABASE_PORT")
 
 app = Flask(__name__)
 
-metrics = PrometheusMetrics(app=app)
+metrics = PrometheusMetrics(app)
 
 
-mongoClient = db.MongoClient("mongodb://%s:%d" % (db_host, db_port))
+mongoClient = db.MongoClient("mongodb://%s:%s" % (db_host, db_port))
 mongoCollection = mongoClient["babble"]["blabs"]
 
 responses = []

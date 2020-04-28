@@ -1,15 +1,20 @@
 from flask import Flask, jsonify, request, make_response, abort
+from envyaml import EnvYAML
 import time
 import pymongo as db
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import Counter
+
+env = EnvYAML('env.yaml')
+db_host = env.get('database.host', 'mongo')
+db_port = env.get('database.port', '27017')
 
 app = Flask(__name__)
 
 metrics = PrometheusMetrics(app=app)
 
 
-mongoClient = db.MongoClient("mongodb://mongo:27017")
+mongoClient = db.MongoClient("mongodb://%s:%d" % (db_host, db_port))
 mongoCollection = mongoClient["babble"]["blabs"]
 
 responses = []

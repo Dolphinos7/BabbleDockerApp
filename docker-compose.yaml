@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
     api:
+        env_file: ./env/vars
         build: ./
         image: neberizer/babble #image to import
         working_dir: /app #sets working directory

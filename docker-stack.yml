@@ -9,6 +9,7 @@ services:
         deploy:
             labels:
                 traefik.http.routers.babble.rule: PathPrefix(`/api`)
+                traefik.http.services.babble.loadbalancer.server.port: 5000
             replicas: 2
             placement:
                 constraints:
@@ -63,6 +64,7 @@ services:
         deploy:
             labels:
                 traefik.http.routers.client.rule: PathPrefix(`/`)
+                traefik.http.services.client.loadbalancer.server.port: 80
             replicas: 2
             placement:
                 constraints:

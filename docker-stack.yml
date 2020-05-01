@@ -10,9 +10,9 @@ services:
             FLASK_ENV: development
             FLASK_APP: /app/app.py
             DEBUG_METRICS: "some_value"
-        labels:
-            traefik.http.routers.babble.rule: PathPrefix(`/api`)
         deploy:
+            labels:
+                traefik.http.routers.babble.rule: PathPrefix(`/api`)
             replicas: 2
             placement:
                 constraints:
@@ -64,9 +64,9 @@ services:
 
     client:
         image: vtcs2304s19/blabber-client
-        labels:
-            traefik.http.routers.client.rule: PathPrefix(`/`)
         deploy:
+            labels:
+                traefik.http.routers.client.rule: PathPrefix(`/`)
             replicas: 2
             placement:
                 constraints:

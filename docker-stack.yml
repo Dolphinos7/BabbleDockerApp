@@ -2,10 +2,11 @@ version: "3.7"
 
 services:
     api:
-        image: neberizer/babble #image to import
-        working_dir: /app #sets working directory
+        image: neberizer/babble 
+        working_dir: /app
         environment:
             FLASK_APP: /app/app.py
+            ENV_FILE_PATH: ./.env
         deploy:
             labels:
                 traefik.http.routers.babble.rule: PathPrefix(`/api`)
@@ -14,30 +15,6 @@ services:
             placement:
                 constraints:
                     - "node.role==worker"
-
-    # prometheus:
-    #     user: root
-    #     image: prom/prometheus
-    #     ports:
-    #         - 9090:9090
-    #     volumes:
-    #         - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    #     deploy:
-    #         placement:
-    #             constraints:
-    #                 - "node.role==worker"
-
-    # grafana:
-    #     image: grafana/grafana
-    #     volumes:
-    #         - grafana-storage:/var/lib/grafana
-    #     ports:
-    #         - 2999:2999
-    #     deploy:
-    #         placement:
-    #             constraints:
-    #                 - "node.role==worker"
-            
             
     proxy:
         image: traefik:v2.1
@@ -68,18 +45,7 @@ services:
             replicas: 2
             placement:
                 constraints:
-                    - "node.role==worker"
-
-    # tests:
-    #     image: vtcs2304s19/blabber-api-tests
-    #     environment:
-    #         SERVICE_NAME: api
-    #         API_PORT: "5000"         
+                    - "node.role==worker"      
 
 volumes:
     grafana-storage:
-
-#docker-compose commands
-#up - start stuff
-#down - stop stuff
-#logs - view logs

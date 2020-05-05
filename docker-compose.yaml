@@ -3,8 +3,8 @@ version: "3.7"
 services:
     api:
         build: ./
-        image: neberizer/babble #image to import
-        working_dir: /app #sets working directory
+        image: neberizer/babble 
+        working_dir: /app 
         volumes:
             - ./:/app
         environment:
@@ -48,16 +48,5 @@ services:
         labels:
             traefik.http.routers.client.rule: PathPrefix(`/`)
 
-    # tests:
-    #     image: vtcs2304s19/blabber-api-tests
-    #     environment:
-    #         SERVICE_NAME: api
-    #         API_PORT: "5000"         
-
 volumes:
     grafana-storage:
-
-#docker-compose commands
-#up - start stuff
-#down - stop stuff
-#logs - view logs
